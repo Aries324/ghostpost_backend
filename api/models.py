@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.timezone import now
 # https://stackoverflow.com/questions/2771676/django-datetime-issues-default-datetime-now#2771701
 
 
@@ -9,8 +8,8 @@ from django.utils.timezone import now
 class Posts_Review(models.Model):
     is_boast = models.BooleanField(default=True)
     content = models.CharField(max_length=280)
-    up_votes = models.IntegerField(default=0)
-    down_votes = models.IntegerField(default=0)
+    up_votes = models.PositiveIntegerField(default=0)
+    down_votes = models.PositiveIntegerField(default=0)
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -18,4 +17,9 @@ class Posts_Review(models.Model):
             return 'Boast'
         else:
             return 'Roast'
+
+    def total_votes(self):
+        return self.up_votes - self.down_votes
+
+
 

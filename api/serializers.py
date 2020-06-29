@@ -10,5 +10,8 @@ class Posts_ReviewSerializer(HyperlinkedModelSerializer):
             'content',
             'up_votes',
             'down_votes',
-            'time'
+            'time',
+            'id',
+            'total_votes'
+
         )
